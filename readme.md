@@ -3,8 +3,11 @@
 # 2023.08.11
 # code by Christian Möller
 
-This script continuously retrieves the local IP address, adds a timestamp, and saves it to a text file on the desktop. It can be useful for monitoring your device's IP address changes over time.
-It was made on a Mac running macOS 13.4 Ventura but ist should run on older macOS versions as well
+This script continuously retrieves the local IP address, adds a timestamp,
+and saves it to a text file on the desktop. It can be useful for monitoring
+your device's IP address changes over time.
+It was made on a Mac running macOS 13.4 Ventura but it
+should run on older macOS versions as well
 
 ## Table of Contents
 
