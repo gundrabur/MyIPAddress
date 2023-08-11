@@ -17,7 +17,12 @@ It was made on a Mac running macOS 13.4 Ventura but ist should run on older macO
 
 ## Overview
 
-This shell script is designed to run on macOS and uses the Bash shell. It fetches the local IPv4 address of your device's active network interface, appends a timestamp to it, and displays it in the terminal. Additionally, it writes the timestamped IP address to a text file named `ip_address.txt` on your desktop, allowing you to track IP changes over time.
+This shell script is designed to run on macOS and uses the Bash shell.
+It fetches the local IPv4 address of your device's active network interface,
+appends a timestamp to it, and displays it in the terminal.
+Additionally, it writes the timestamped IP address to a text file
+named `ip_address.txt` on your desktop, allowing you to track
+IP changes over time.
 
 ## Prerequisites
 
@@ -51,7 +56,8 @@ The script will start fetching and tracking your IP address at one-minute interv
 
 You can customize the behavior of the script by modifying the following:
 
-- `sleep` duration: In the script, you can adjust the `sleep` duration to change how often the IP address is checked and updated.
+- `sleep` duration: In the script, you can adjust the `sleep` duration
+to change how often the IP address is checked and updated.
 
 ## Stopping the Script
 
@@ -65,7 +71,8 @@ Feel free to use, modify, and distribute the script according to the terms of th
 
 ---
 
-_Disclaimer: This script is provided as-is and may not work in all environments or under all conditions. Use it responsibly and at your own risk._
+_Disclaimer: This script is provided as-is and may not work in all environments
+or under all conditions. Use it responsibly and at your own risk._
 ```
 
-Replace `/path/to/ip-address-script` with the actual path to the directory where your script is located. You can save this content in a file named `README.md` in your GitHub repository to provide detailed information about your IP address tracking script. Make sure to adjust any paths, filenames, or other details as needed to match your actual setup.
+Replace `/path/to/ip-address-script` with the actual path to the directory where your script is located.
