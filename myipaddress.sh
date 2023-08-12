@@ -26,7 +26,7 @@ while true; do
     # Compare the current IP address with the previous IP address
     if [ "$ip_address" != "$prev_ip_address" ]; then
         # Display the timestamp and IP address in the terminal
-        echo "[$timestamp] $ip_address"
+        echo -e "[$timestamp] $ip_address\n$output_file"
 
         # Write the timestamp and IP address to the specified text file
         echo "[$timestamp] $ip_address" > "$output_file"
