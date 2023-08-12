@@ -1,7 +1,19 @@
 #!/bin/bash
 
 # This script continuously retrieves the local IP address,
-# adds a timestamp, and saves it to a text file on the desktop.
+# adds a timestamp, and saves it to a text file.
+
+if [ $# -eq 0 ]; then
+    output_file=~/Desktop/ip_address.txt
+elif [ $# -eq 1 ]; then
+    output_file="$1"
+else
+    echo "Usage: $0 [output_file]"
+    exit 1
+fi
+
+# Initialize the previous IP address variable
+prev_ip_address=""
 
 while true; do
     # Get the current timestamp in the format "YYYY-MM-DD HH:MM:SS"
@@ -11,11 +23,17 @@ while true; do
     # filter out loopback addresses (127.0.0.1), and extract the IPv4 address
     ip_address=$(ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}')
 
-    # Display the timestamp and IP address in the terminal
-    echo "[$timestamp] $ip_address"
+    # Compare the current IP address with the previous IP address
+    if [ "$ip_address" != "$prev_ip_address" ]; then
+        # Display the timestamp and IP address in the terminal
+        echo "[$timestamp] $ip_address"
 
-    # Write the timestamp and IP address to a text file named 'ip_address.txt' on the desktop
-    echo "[$timestamp] $ip_address" > ~/Desktop/ip_address.txt
+        # Write the timestamp and IP address to the specified text file
+        echo "[$timestamp] $ip_address" > "$output_file"
+
+        # Update the previous IP address variable
+        prev_ip_address="$ip_address"
+    fi
 
     # Pause the script for 60 seconds before the next iteration
     sleep 60

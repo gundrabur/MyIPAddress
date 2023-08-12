@@ -4,8 +4,8 @@
 # code by Christian Möller
 
 This script continuously retrieves the local IP address, adds a timestamp,
-and saves it to a text file on the desktop. It can be useful for monitoring
-your device's IP address changes over time.
+and saves it to a text file on a given path or the desktop as default if no path was given.
+It can be useful for monitoring your device's IP address changes over time.
 It was made on a Mac running macOS 13.4 Ventura but it
 should run on older macOS versions as well
 
@@ -25,7 +25,7 @@ It fetches the local IPv4 address of your device's active network interface,
 appends a timestamp to it, and displays it in the terminal.
 Additionally, it writes the timestamped IP address to a text file
 named `ip_address.txt` on your desktop, allowing you to track
-IP changes over time.
+IP changes over time. It does that only if the IP addresss changes.
 
 ## Prerequisites
 
