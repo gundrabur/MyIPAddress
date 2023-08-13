@@ -3,7 +3,7 @@
 # 2023.08.11
 # code by Christian Möller
 
-This script continuously retrieves the local IP address, adds a timestamp,
+This shell or python-script continuously retrieves the local IP address, adds a timestamp,
 and saves it to a text file on a given path or the desktop as default if no path was given.
 It can be useful for monitoring your device's IP address changes over time.
 It was made on a Mac running macOS 13.4 Ventura but it
