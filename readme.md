@@ -1,81 +1,59 @@
-```markdown
-# IP Address Tracking Script
-# 2023.08.11
-# code by Christian Möller
+# IP Address Logger
 
-This shell or python-script continuously retrieves the local IP address, adds a timestamp,
-and saves it to a text file on a given path or the desktop as default if no path was given.
-It can be useful for monitoring your device's IP address changes over time.
-It was made on a Mac running macOS 13.4 Ventura but it
-should run on older macOS versions as well
+2023.08.13 - Christian Möller
 
-## Table of Contents
+This repository contains three code files: a shell script, a Python script, and a Swift program, all of which serve the purpose of continuously retrieving the local IP address, adding a timestamp, and saving the information to a text file.
 
-- [Overview](#overview)
-- [Prerequisites](#prerequisites)
-- [Usage](#usage)
-- [Customization](#customization)
-- [Stopping the Script](#stopping-the-script)
-- [License](#license)
+## Shell Script (myipaddress.sh)
 
-## Overview
+The `myipaddress.sh` shell script is responsible for retrieving the local IP address and saving it, along with a timestamp, to a text file. It continuously checks for changes in the IP address and updates the file accordingly. Here's how it works:
 
-This shell script is designed to run on macOS and uses the Bash shell.
-It fetches the local IPv4 address of your device's active network interface,
-appends a timestamp to it, and displays it in the terminal.
-Additionally, it writes the timestamped IP address to a text file
-named `ip_address.txt` on your desktop, allowing you to track
-IP changes over time. It does that only if the IP addresss changes.
+1. It takes an optional command-line argument specifying the output file path. If no argument is provided, the default path is `~/Desktop/ip_address.txt`.
+2. The script initializes a variable to store the previous IP address.
+3. In an infinite loop:
+   - It obtains the current timestamp.
+   - It uses the `ifconfig` command to extract the IPv4 address, excluding loopback addresses.
+   - If the current IP address differs from the previous one:
+     - It displays the timestamp and IP address in the terminal.
+     - It writes the timestamp and IP address to the specified text file.
+     - It updates the previous IP address variable.
+   - It pauses the script for 60 seconds before the next iteration.
 
-## Prerequisites
+## Python Script (myipaddress.py)
 
-- macOS (tested on macOS 10.13)
-- Bash shell (usually pre-installed on macOS)
+The `myipaddress.py` Python script achieves the same goal as the shell script but uses Python for implementation. Here's how it works:
+
+1. It imports necessary libraries: `os`, `time`, `socket`, and `datetime`.
+2. It defines a function, `get_local_ip()`, to retrieve the local IP address using the hostname.
+3. It takes an optional command-line argument specifying the output file path. If no argument is provided, the default path is `~/Desktop/ip_address.txt`.
+4. The script initializes a variable to store the previous IP address.
+5. In an infinite loop:
+   - It obtains the current timestamp.
+   - It uses the `get_local_ip()` function to retrieve the IPv4 address.
+   - If the current IP address differs from the previous one:
+     - It displays the timestamp and IP address in the terminal.
+     - It writes the timestamp and IP address to the specified text file.
+     - It updates the previous IP address variable.
+   - It pauses the script for 60 seconds before the next iteration.
+
+## Swift Program (myipaddress.swift)
+
+The `myipaddress.swift` Swift program also accomplishes the same objective using Swift programming language. Here's how it works:
+
+1. It defines a function, `getLocalIP()`, which uses a shell command to retrieve the local IP address.
+2. It defines a function, `main(outputFile:)`, to periodically retrieve the IP address, similar to the shell and Python scripts.
+3. The script checks the number of command-line arguments:
+   - If only one argument is provided, it generates the output file path on the user's desktop and calls `main(outputFile:)`.
+   - If two arguments are provided (executable name and output file path), it uses the provided output file path and calls `main(outputFile:)`.
+   - If an incorrect number of arguments is provided, it displays usage information and exits.
 
 ## Usage
 
-1. Download or clone this repository to your local machine.
-2. Open Terminal and navigate to the directory containing the script.
+To use any of the provided scripts or Swift program, follow these steps:
 
-```bash
-cd /path/to/ip-address-script
-```
+1. Make the script/program executable (if needed): `chmod +x ip_address.sh` or `chmod +x main.swift`.
+2. Run the script/program: `./ip_address.sh [output_file]` or `./main.swift [output_file]`.
 
-3. Make the script executable if needed:
+If you don't provide an output file argument, the scripts will save the IP address information to a file named `ip_address.txt` on your desktop by default.
 
-```bash
-chmod +x ip_address_script.sh
-```
-
-4. Run the script:
-
-```bash
-./ip_address_script.sh
-```
-
-The script will start fetching and tracking your IP address at one-minute intervals.
-
-## Customization
-
-You can customize the behavior of the script by modifying the following:
-
-- `sleep` duration: In the script, you can adjust the `sleep` duration
-to change how often the IP address is checked and updated.
-
-## Stopping the Script
-
-To stop the script, press `Ctrl + C` in the terminal where the script is running.
-
-## License
-
-This script is released under the [MIT License](LICENSE).
-
-Feel free to use, modify, and distribute the script according to the terms of the license.
-
----
-
-_Disclaimer: This script is provided as-is and may not work in all environments
-or under all conditions. Use it responsibly and at your own risk._
-```
-
-Replace `/path/to/ip-address-script` with the actual path to the directory where your script is located.
+Remember to replace `[output_file]` with the desired file path if you choose to provide a custom output file location.
