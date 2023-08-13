@@ -51,8 +51,9 @@ The `myipaddress.swift` Swift program also accomplishes the same objective using
 
 To use any of the provided scripts or Swift program, follow these steps:
 
-1. Make the script/program executable (if needed): `chmod +x ip_address.sh` or `chmod +x main.swift`.
-2. Run the script/program: `./ip_address.sh [output_file]` or `./main.swift [output_file]`.
+1. Make the script/program executable (if needed): `chmod +x ip_address.sh`.
+2. Run the script/program: `./ip_address.sh [output_file]`.
+3. You can compile the swift code in XCode, copy it to main.swift. Target macOS can be from 10.13 up.
 
 If you don't provide an output file argument, the scripts will save the IP address information to a file named `ip_address.txt` on your desktop by default.
 
