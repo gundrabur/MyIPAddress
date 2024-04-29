@@ -4,7 +4,7 @@
 # adds a timestamp, and saves it to a text file.
 
 if [ $# -eq 0 ]; then
-    output_file=~/Desktop/ip_address.txt
+    output_file=~/Library/Mobile\ Documents/com\~apple\~CloudDocs/Developer/macOS/Shell\ Scripts/MyIPAddress/ip_address.txt
 elif [ $# -eq 1 ]; then
     output_file="$1"
 else
@@ -33,6 +33,11 @@ while true; do
 
         # Update the previous IP address variable
         prev_ip_address="$ip_address"
+    else
+        # Display the timestamp and IP address in the terminal
+        echo -e "[$timestamp] no IP change $ip_address\n$output_file"
+        # Write the timestamp and IP address to the specified text file
+        echo "[$timestamp] no IP change $ip_address" > "$output_file"
     fi
 
     # Pause the script for 60 seconds before the next iteration
