@@ -34,6 +34,8 @@ if [ "$ip_address" != "$prev_ip_address" ]; then
 
     # Write the timestamp and IP address to the output file, overwriting previous content
     echo "[$timestamp] $ip_address" > "$output_file"
+    # write to console
+    syslog -s "My new IP is: $ip_address"
 
     # Update the previous IP address variable for comparison in the next loop iteration
     prev_ip_address="$ip_address"
@@ -43,4 +45,7 @@ else
     echo -e "[$timestamp] no IP change $ip_address\n$output_file"
     # Write the timestamp and IP address to the specified text file
     echo "[$timestamp] no IP change $ip_address" > "$output_file" 
+    # write to console
+    syslog -s "No IP change: $ip_address"
+
 fi
