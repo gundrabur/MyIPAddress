@@ -48,5 +48,6 @@ while true; do
     fi
 
     # Pause the script for 60 seconds before checking the IP address again
-    sleep 60
+    # no need any more, since we're running this script from launchd
+    # sleep 60
 done
